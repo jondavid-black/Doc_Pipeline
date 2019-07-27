@@ -34,21 +34,26 @@ pipeline {
             }
         }
 
-        
-
         stage('Launch Jekyll') {
             steps {
                 sh 'echo "Launch Jekyll"'
+                sh 'cd design-document'
+                sh 'bundle exec jekyll serve &'
+                sh 'cd ..'
             }
         }
 
         stage('Document Quality Checks') {
             parallel {
                 stage('Spell Check') {
-                    sh 'echo "Spell Check"'
+                    steps {
+                        sh 'echo "Spell Check"'
+                    }
                 }
                 stage('Verify img tags') {
-                    sh 'echo "Verify img tags"'
+                    steps {
+                        sh 'echo "Verify img tags"'
+                    }
                 }
             }
         }
@@ -56,12 +61,14 @@ pipeline {
         stage('Save to PDF') {
             steps {
                 sh 'echo "Save to PDF"'
+                sh 'google-chrome-stable --headless --print-to-pdf="doc.pdf" http://localhost:4000'
             }
         }
 
         stage('Clean Up') {
             steps {
                 sh 'echo "Clean Up"'
+                sh 'echo "Shutdown Jekyll"'
             }
         }
     }
