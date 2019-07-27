@@ -10,21 +10,25 @@ pipeline {
 
     stages {
         
-        stage('Generate TOC') {
-            steps {
-                sh 'echo "Generate TOC"'
-            }
-        }
+        stage('Generate Document Front Matter') {
+            parallel {
+                stage('Generate TOC') {
+                    steps {
+                        sh 'echo "Generate TOC"'
+                    }
+                }
 
-        stage('Generate TOF') {
-            steps {
-                sh 'echo "Generate TOF"'
-            }
-        }
+                stage('Generate TOF') {
+                    steps {
+                        sh 'echo "Generate TOF"'
+                    }
+                }
 
-        stage('Generate Acronyms') {
-            steps {
-                sh 'echo "Generate Acronyms"'
+                stage('Generate Acronyms') {
+                    steps {
+                        sh 'echo "Generate Acronyms"'
+                    }
+                }
             }
         }
 
@@ -36,10 +40,13 @@ pipeline {
 
         stage('Launch Jekyll') {
             steps {
+                sh 'pwd'
                 sh 'echo "Launch Jekyll"'
                 sh 'cd design-document'
+                sh 'pwd'
                 sh 'bundle exec jekyll serve &'
                 sh 'cd ..'
+                sh 'pwd'
             }
         }
 
