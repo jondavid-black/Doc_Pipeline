@@ -14,4 +14,4 @@ The Magic 8 Ball software design.
            width="200px"
            align="left"
 %}
-This is the design section.  The point right now is to simply see of my table of figures is populated correctly.  Specifically I'm looking to make sure order is preserved by section.
+This is the desing section.  The point right now is to simply see of my table of figures is populated correctly.  Specifically I'm looking to make sure order is preserved by section.
