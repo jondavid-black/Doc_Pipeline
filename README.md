@@ -1,4 +1,4 @@
-#Doc_Pipeline
+# Doc_Pipeline
 
 This is a prototype pipeline that focuses on generation of documentation from your Git repository. This has been developed as part of the SW Factory series for the DevOps for Defense meetup.
 
