@@ -1,0 +1,35 @@
+apply plugin: 'java'
+
+repositories {
+    jcenter()
+}
+ 
+// Add new configuration for
+// dependencies needed to run
+// Groovy command line scripts.
+configurations {
+    groovyScript
+}
+ 
+dependencies {
+    // Set Groovy dependency so
+    // groovy.ui.GroovyMain can be found.
+    groovyScript localGroovy()
+    // Or be specific for a version:
+    //groovyScript "org.codehaus.groovy:groovy-all:2.4.5"
+}
+
+task spellCheck() {
+    doLast {
+        new ByteArrayOutputStream().withStream { os ->
+            def result = exec {
+                executable = 'python'
+                args = ['./src/tools/python/spell_check.py', './dictionary.dic', './design-document/_posts', './spelling_errors.json']
+                standardOutput = os
+            }
+            ext.spellingErrors = os.toString()
+            
+            assert os.toString().length() == 0 : "Spelling errors exist in the document."
+        }
+    }
+}

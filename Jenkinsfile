@@ -42,10 +42,7 @@ pipeline {
                     steps {
                         sh 'echo "Spell Check"'
                         // this command will generate spelling_errors.json in the current directory
-                        sh 'python ./src/tools/python/spell_check.py ./dictionary.dic ./design-document/_posts > spelling_errors.json'
-                    
-                        def spellingErrorFile = new File("./spelling_errors.json")
-                        assert spellingErrorFile.length() == 0
+                        sh 'gradle spellCheck'
                     }
                 }
                 stage('Verify img tags') {

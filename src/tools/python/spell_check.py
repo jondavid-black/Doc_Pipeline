@@ -65,3 +65,8 @@ with os.scandir(sys.argv[2]) as it:
 
 print(json.dumps(spellingErrors))
 
+if  sys.argv[3]:
+    with open(sys.argv[3], 'w') as fp:
+        json.dump(spellingErrors, fp)
+
+
