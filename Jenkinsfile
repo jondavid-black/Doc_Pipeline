@@ -1,3 +1,5 @@
+#!/usr/bin/env groovy
+
 // For this pipeline to work, many of these commands must run as root.
 //  The best way I see to do this is to run Jenkins under a Jenkins user.
 //  Then setup that Jenkins user with special permissions in the sudoers.d directory for the needed commands.
