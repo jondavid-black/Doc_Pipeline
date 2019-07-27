@@ -40,12 +40,6 @@ pipeline {
             }
         }
 
-        stage('Spell Check') {
-            steps {
-                sh 'echo "Spell Check"'
-            }
-        }
-
         stage('Launch Jekyll') {
             steps {
                 sh 'echo "Launch Jekyll"'
