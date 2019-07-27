@@ -64,7 +64,7 @@ with os.scandir(sys.argv[2]) as it:
                 spellingErrors[entry.path] = misspelledWords
 
 # if spelling errors exist, print and write to file
-if not spellingErrors:
+if bool(spellingErrors):
     print(json.dumps(spellingErrors))
 
     if  sys.argv[3]:
