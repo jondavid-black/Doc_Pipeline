@@ -60,6 +60,6 @@ out += "</ul>\n"
 
 print(out)
 
-if  sys.argv[3]:
-    with open(sys.argv[3], 'w') as fp:
+if len(sys.argv) == 3:
+    with open(sys.argv[2], 'w') as fp:
         fp.write(out)

@@ -18,7 +18,7 @@ pipeline {
                 stage('Generate TOF') {
                     steps {
                         sh 'echo "Generate TOF"'
-                        sh 'python ./src/tools/python/genTOF.py ./design-document/_posts/ > ./design-document/_includes/tof.html'
+                        sh 'python ./src/tools/python/genTOF.py ./design-document/_posts/ ./design-document/_includes/tof.html'
                     }
                 }
 
