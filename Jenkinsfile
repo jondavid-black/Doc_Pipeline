@@ -34,11 +34,7 @@ pipeline {
             }
         }
 
-        stage('Spell Check') {
-            steps {
-                sh 'echo "Spell Check"'
-            }
-        }
+        
 
         stage('Launch Jekyll') {
             steps {
@@ -46,9 +42,14 @@ pipeline {
             }
         }
 
-        stage('Verify img tags') {
-            steps {
-                sh 'echo "Verify img tags"'
+        stage('Document Quality Checks') {
+            parallel {
+                stage('Spell Check') {
+                    sh 'echo "Spell Check"'
+                }
+                stage('Verify img tags') {
+                    sh 'echo "Verify img tags"'
+                }
             }
         }
 
