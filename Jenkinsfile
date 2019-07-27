@@ -73,4 +73,10 @@ pipeline {
             }
         }
     }
+
+    post {
+        always {
+            archiveArtifacts artifacts: 'doc.pdf', fingerprint: true
+        }
+    }
 }
