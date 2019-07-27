@@ -59,3 +59,7 @@ for key in sorted (section.keys()):
 out += "</ul>\n"
 
 print(out)
+
+if  sys.argv[3]:
+    with open(sys.argv[3], 'w') as fp:
+        fp.write(out)
