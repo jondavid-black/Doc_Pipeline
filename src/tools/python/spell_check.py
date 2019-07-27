@@ -63,10 +63,12 @@ with os.scandir(sys.argv[2]) as it:
                 # keep track of words and files
                 spellingErrors[entry.path] = misspelledWords
 
-print(json.dumps(spellingErrors))
+# if spelling errors exist, print and write to file
+if not spellingErrors:
+    print(json.dumps(spellingErrors))
 
-if  sys.argv[3]:
-    with open(sys.argv[3], 'w') as fp:
-        json.dump(spellingErrors, fp)
+    if  sys.argv[3]:
+        with open(sys.argv[3], 'w') as fp:
+            json.dump(spellingErrors, fp)
 
 
