@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .doc-table {
+            width: 100%;
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .doc-header {
+            background: yellow;
+            padding: 5px;
+            display: grid;
+            grid-template-columns: 30% 5% 30% 5% 30%;
+            grid-template-rows: 50px;
+        }
+
+        .doc-header-left {
+            background: red;
+            text-align: left;
+        }
+
+        .doc-header-center {
+            background: purple;
+            grid-column-start: 3;
+            text-align: center;
+        }
+
+        .doc-header-right {
+            background: wheat;
+            grid-column-start: 5;
+            text-align: right;
+        }
+
+        .doc-body {
+            background: green;
+        }
+
+        .doc-footer {
+            background: blue;
+            padding: 5px;
+            display: grid;
+            grid-template-columns: 30% 5% 30% 5% 30%;
+            grid-template-rows: 50px;
+        }
+
+        .doc-footer-left {
+            background: red;
+            text-align: left;
+        }
+
+        .doc-footer-center {
+            background: purple;
+            grid-column-start: 3;
+            text-align: center;
+        }
+
+        .doc-footer-right {
+            background: wheat;
+            grid-column-start: 5;
+            text-align: right;
+        }
+
+        .title-page {
+            background: gray;
+            page-break-after: always;
+        }
+
+        .title-img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 4in;
+        }
+
+        .title-name {
+            font-size: 28pt;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .title-date {
+            font-size: 20pt;
+            font-weight: normal;
+            text-align: center;
+        }
+
+        .title-info {
+            display: grid;
+            grid-template-columns: 47.5% 5% 47.5%;
+            grid-template-rows: 300px;
+        }
+
+        .title-info-legal {
+            font-size: 10pt;
+            border: 1px solid black;
+            background: chocolate;
+        }
+
+        .title-info-data {
+            background: crimson;
+            grid-column-start: 3;
+            display: grid;
+            grid-template-columns: 50% 50%;
+        }
+
+        .title-info-table {
+            background: teal;
+            border: 1px solid black;
+            padding: 5px;
+        }
+
+        .table-of-contents {
+            background: royalblue;
+            page-break-after: always;
+        }
+
+        .table-of-figures {
+            background: tan;
+            page-break-after: always;
+        }
+        .section-title-heder {
+            font-size: 16pt;
+            font-weight: bold;
+            text-align: left;
+        }
+
+        .acronym-list {
+            background: tomato;
+            page-break-after: always;
+        }
+    </style>
+</head>
+
+<body>
+    <table class="doc-table">
+        <thead>
+            <tr>
+                <td>
+                    <header class="doc-header">
+                        <div class="doc-header-left">Left Header</div>
+                        <div class="doc-header-center">Center Header</div>
+                        <div class="doc-header-right">Right Header</div>
+                    </header>
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <section class="title-page">
+                        <section><img class="title-img" src="../img/DevOpsForDefenseLogo_2_small.png"></section>
+                        <section>
+                            <div class="title-name">Document Title</div>
+                            <div class="title-date">Document Date</div>
+                        </section>
+                        <section class="title-info">
+                            <div class="title-info-legal">legal statement</div>
+                            <div class="title-info-data">
+                                <div class="title-info-table">Info 1</div>
+                                <div class="title-info-table">Data 1</div>
+                                <div class="title-info-table">Info 2</div>
+                                <div class="title-info-table">Data 2</div>
+                                <div class="title-info-table">Info 3</div>
+                                <div class="title-info-table">Data 3</div>
+                            </div>
+                        </section>
+                    </section>
+                    <section class="table-of-contents">
+                        <div class="section-title-header">Table of Contents</div>
+                        <ul>
+                            <li>Chapter 1</li>
+                            <li>Chapter 2</li>
+                            <li>Chapter 3</li>
+                            <li>Chapter 4</li>
+                            <li>Chapter 5</li>
+                        </ul>
+                    </section>
+                    <section class="table-of-figures">
+                            <div class="section-title-header">Table of Figures</div>
+                        <ul>
+                            <li>Figure 1</li>
+                            <li>Figure 2</li>
+                            <li>Figure 3</li>
+                            <li>Figure 4</li>
+                            <li>Figure 5</li>
+                        </ul>
+                    </section>
+                    <section class="acronym-list">
+                            <div class="section-title-header">Acronyms</div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td>Acronym</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>TRL</td>
+                                    <td>Technology Readiness Level</td>
+                                </tr>
+                                <tr>
+                                    <td>TRL</td>
+                                    <td>Technology Readiness Level</td>
+                                </tr>
+                                <tr>
+                                    <td>TRL</td>
+                                    <td>Technology Readiness Level</td>
+                                </tr>
+                                <tr>
+                                    <td>TRL</td>
+                                    <td>Technology Readiness Level</td>
+                                </tr>
+                                <tr>
+                                    <td>TRL</td>
+                                    <td>Technology Readiness Level</td>
+                                </tr>
+                                <tr>
+                                    <td>TRL</td>
+                                    <td>Technology Readiness Level</td>
+                                </tr>
+                                <tr>
+                                    <td>TRL</td>
+                                    <td>Technology Readiness Level</td>
+                                </tr>
+                                <tr>
+                                    <td>TRL</td>
+                                    <td>Technology Readiness Level</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                    <section class="doc-body">
+                        This is my document content.
+                        <br>
+                        This is my document content.
+                        <br>
+                        This is my document content.
+                        <br>
+                        This is my document content.
+                        <br>
+                        This is my document content.
+                        <br>
+                        This is my document content.
+                        <br>
+                        This is my document content.
+                        <br>
+                        This is my document content.
+                        <br>
+                        This is my document content.
+                        <br>
+                        This is my document content.
+                        <br>
+                        This is my document content.
+                        <br>
+                        This is my document content.
+                        <br>
+                        This is my document content.
+                        <br>
+                        This is my document content.
+                        <br>
+                        This is my document content.
+                        <br>
+                        This is my document content.
+                        <br>
+                        This is my document content.
+                        <br>
+                        This is my document content.
+                        <br>
+                        This is my document content.
+                        <br>
+                        This is my document content.
+                        <br>
+                        This is my document content.
+                        <br>
+                        This is my document content.
+                        <br>
+                        This is my document content.
+                        <br>
+                        This is my document content.
+                        <br>
+                        This is my document content.
+                        <br>
+                        This is my document content.
+                        <br>
+                        This is my document content.
+                        <br>
+                        This is my document content.
+                        <br>
+                        This is my document content.
+                        <br>
+                        This is my document content.
+                        <br>
+                        This is my document content.
+                        <br>
+                        This is my document content.
+                        <br>
+                        This is my document content.
+                        <br>
+                    </section>
+                </td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>
+                    <footer class="doc-footer">
+                        <div class="doc-footer-left">Left Footer</div>
+                        <div class="doc-footer-center">Center Footer</div>
+                        <div class="doc-footer-right">Right Footer</div>
+                    </footer>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</body>

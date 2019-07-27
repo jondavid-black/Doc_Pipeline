@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+{% include head.html %}
+
+<body>
+    
+    <div class="page-header" style="text-align: center">
+        <div class="header-center"><b>UNCLASSIFIED</b>
+            <button type="button" onClick="window.print()" style="background: white">
+                Print
+            </button>
+        </div>
+        <div class="header-left">{{ page.header-left }}</div> 
+        <div class="header-right">{{ page.header-right }}</div>
+    </div>
+
+    <div class="page-footer" style="text-align: center">
+        <div class="footer-center"><b>UNCLASSIFIED</b></div>
+        <div class="footer-left">{{ page.footer-left }}</div> 
+        <div class="footer-right">{{ page.footer-right }}</div>
+    </div>
+
+  <table>
+
+    <thead>
+      <tr>
+        <td>
+          <!--place holder for the fixed-position header-->
+          <div class="page-header-space"></div>
+        </td>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td>
+            <div class="title-page">
+                {% include titlepage.html %}
+            </div>
+            <div class="page">
+                {{ content }}
+            </div>
+        </td>
+      </tr>
+    </tbody>
+
+    <tfoot>
+      <tr>
+        <td>
+          <!--place holder for the fixed-position footer-->
+          <div class="page-footer-space"></div>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+
+</body>
+
+</html>
+
+<!--
+Acknowledgements:
+
+1) Header/Footer structure:  
+  a) article: https://medium.com/@Idan_Co/the-ultimate-print-html-template-with-header-footer-568f415f6d2a
+  b) demo: https://next.plnkr.co/edit/lWk6Yd?preview=&source=post_page---------------------------
+
+-->

@@ -1,0 +1,189 @@
+body {
+    margin: 0px;
+    padding: 0px;
+}
+
+.doc-table {
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
+.doc-header {
+    background: white;
+    padding: 5px;
+    display: grid;
+    grid-template-columns: 30% 5% 30% 5% 30%;
+    grid-template-rows: 50px;
+}
+
+.doc-header-left {
+    background: white;
+    text-align: left;
+    vertical-align: top;
+}
+
+.doc-header-center {
+    background: white;
+    grid-column-start: 3;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    vertical-align: top;
+}
+
+.doc-header-right {
+    background: white;
+    grid-column-start: 5;
+    text-align: right;
+    vertical-align: top;
+}
+
+.doc-body {
+    background: white;
+    font-size: 12pt;
+    page-break-after: always;
+}
+
+.doc-footer {
+    background: white;
+    padding: 5px;
+    display: grid;
+    grid-template-columns: 30% 5% 30% 5% 30%;
+    grid-template-rows: 50px;
+}
+
+.doc-footer-left {
+    background: white;
+    text-align: left;
+    vertical-align: bottom;
+}
+
+.doc-footer-center {
+    background: white;
+    grid-column-start: 3;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    vertical-align: bottom;
+}
+
+.doc-footer-right {
+    background: white;
+    grid-column-start: 5;
+    text-align: right;
+    vertical-align: bottom;
+}
+
+.title-page {
+    background: white;
+    page-break-after: always;
+}
+
+.title-img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 4in;
+}
+
+.title-name {
+    font-size: 28pt;
+    font-weight: bold;
+    text-align: center;
+}
+
+.title-date {
+    font-size: 20pt;
+    font-weight: normal;
+    text-align: center;
+}
+
+.title-info {
+    display: grid;
+    grid-template-columns: 47.5% 5% 47.5%;
+    grid-template-rows: 300px;
+}
+
+.title-info-legal {
+    font-size: 10pt;
+    border: none;
+    background: white;
+}
+
+.title-info-data {
+    background: white;
+    grid-column-start: 3;
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.title-info-table {
+    background: white;
+    border: 1px solid black;
+    padding: 5px;
+}
+
+.table-of-contents {
+    background: white;
+    page-break-after: always;
+}
+.toc-entry {
+    font-size: 12pt;
+    font-weight: normal;
+}
+
+.table-of-figures {
+    background: white;
+    page-break-after: always;
+}
+.section-title {
+    font-size: 16pt;
+    font-weight: bold;
+    text-align: left;
+}
+.section-body {
+    font-size: 12pt;
+    font-weight: normal;
+    text-align: left;
+    page-break-after: always;
+}
+.acronym-list {
+    background: white;
+    page-break-after: always;
+}
+.figure-left {
+    display: table;
+    float: left;
+    text-align: center;
+    font-style: italic;
+    font-size: smaller;
+    text-indent: 0;
+    border: thin black solid;
+    margin: 10px;
+    padding: 0px;
+}
+.figure-right {
+    float: right;
+    text-align: center;
+    font-style: italic;
+    font-size: smaller;
+    text-indent: 0;
+    border: thin black solid;
+    margin: 10px;
+    padding: 0px;
+}
+.figure-none {
+    float: none;
+    text-align: center;
+    font-style: italic;
+    font-size: smaller;
+    text-indent: 0;
+    border: thin black solid;
+    margin: 10px;
+    padding: 0px;
+}
+.figure-caption {
+    display: table-caption;
+    caption-side: bottom;
+}

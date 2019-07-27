@@ -1,0 +1,6 @@
+{% assign sorted_sections = site.posts | sort:"num" %}
+<ul>
+{% for post in sorted_sections %}
+    <li class-"toc-entry"><a href="#{{post.num}}-{{ post.title}}">{{post.num}} {{ post.title}}</a></li>
+{% endfor %}
+</ul>

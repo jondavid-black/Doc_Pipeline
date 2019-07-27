@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>{{ page.title }}</title>
+
+    <link rel="stylesheet" href="../css/doc.css" type="text/css">
+
+</head>
+
+<body>
+    <table class="doc-table">
+        <thead>
+            <tr>
+                <td>
+                    <header class="doc-header">
+                        <div class="doc-header-left">{{ page.header-left }}</div>
+                        <div class="doc-header-center">{{ page.classification }}</div>
+                        <div class="doc-header-right">{{ page.header-right }}</div>
+                    </header>
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <section class="title-page">
+                        <section>
+                            <img class="title-img" src="{{ page.title-img }}">
+                            <br>
+                        </section>
+                        <section>
+                            <div class="title-name">{{ page.title }}</div>
+                            <div class="title-date">{{ "now" | date: '%B %d, %Y' }}</div>
+                            <br>
+                        </section>
+                        <section class="title-info">
+                            <div class="title-info-legal">{{ page.legal }}</div>
+                            <div class="title-info-data">
+                                {% for item in page.doc-info %}
+                                <div class="title-info-table">{{ item.name }}</div>
+                                <div class="title-info-table">{{ item.data }}</div>
+                                {% endfor %}
+                            </div>
+                        </section>
+                    </section>
+                    <section class="table-of-contents">
+                        <div class="section-title-header">Table of Contents</div>
+                        {% include toc.html %}
+                    </section>
+                    <section class="table-of-figures">
+                        <div class="section-title-header">Table of Figures</div>
+                        {% include tof.html %}
+                    </section>
+                    <section class="acronym-list">
+                        <div class="section-title-header">Acronyms</div>
+                        {% include acronyms.html %}
+                    </section>
+                    <section class="doc-body">
+                        <table>
+                            <tbody>
+                                {% assign sorted_sections = site.posts | sort:"num" %}
+                                {% for section in sorted_sections %}
+                                <tr>
+                                    <td>
+                                        <a id="{{section.num}}-{{ section.title}}">
+                                            <h1 class="section-title">{{section.num}} {{ section.title }}</h1>
+                                        </a>
+                                        <div class="section-body">
+                                            {{ section }}
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </section>
+                </td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>
+                    <footer class="doc-footer">
+                        <div class="doc-footer-left">{{ page.footer-left }}</div>
+                        <div class="doc-footer-center">{{ page.classification }}</div>
+                        <div class="doc-footer-right">{{ page.footer-right }}</div>
+                    </footer>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</body>
