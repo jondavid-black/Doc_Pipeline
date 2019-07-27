@@ -42,9 +42,8 @@ pipeline {
                         // this command will generate spelling_errors.json in the current directory
                         sh 'python ./src/tools/python/spell_check.py ./dictionary.dic ./design-document/_posts > spelling_errors.json'
                     
-                        if (new File("./spelling_errors.json").length() > 0) {
-                            error("Spelling errors exist in the document.")
-                        }
+                        def spellingErrorFile = new File("./spelling_errors.json")
+                        assert spellingErrorFile.length() == 0
                     }
                 }
                 stage('Verify img tags') {
