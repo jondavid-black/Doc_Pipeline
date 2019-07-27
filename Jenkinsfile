@@ -40,13 +40,7 @@ pipeline {
 
         stage('Launch Jekyll') {
             steps {
-                sh 'pwd'
-                sh 'echo "Launch Jekyll"'
-                sh 'cd design-document'
-                sh 'pwd'
-                sh 'bundle exec jekyll serve &'
-                sh 'cd ..'
-                sh 'pwd'
+                sh './runJekyll.sh'
             }
         }
 
