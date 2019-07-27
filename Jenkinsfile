@@ -12,15 +12,11 @@ pipeline {
         
         stage('Generate Document Front Matter') {
             parallel {
-                stage('Generate TOC') {
-                    steps {
-                        sh 'echo "Generate TOC"'
-                    }
-                }
 
                 stage('Generate TOF') {
                     steps {
                         sh 'echo "Generate TOF"'
+                        sh 'python ./src/tools/python/genTOF.py ./design-document/_posts/ > ./design-document/_includes/tof.html'
                     }
                 }
 
@@ -38,17 +34,13 @@ pipeline {
             }
         }
 
-        stage('Launch Jekyll') {
-            steps {
-                sh './runJekyll.sh'
-            }
-        }
-
         stage('Document Quality Checks') {
             parallel {
                 stage('Spell Check') {
                     steps {
                         sh 'echo "Spell Check"'
+                        // this command will generate spelling_errors.json in the current directory
+                        sh 'python ./src/tools/python/spell_check.py ./dictionary.dic ./design-document/_posts > spelling_errors.json'
                     }
                 }
                 stage('Verify img tags') {
@@ -56,6 +48,12 @@ pipeline {
                         sh 'echo "Verify img tags"'
                     }
                 }
+            }
+        }
+
+        stage('Launch Jekyll') {
+            steps {
+                sh './runJekyll.sh'
             }
         }
 

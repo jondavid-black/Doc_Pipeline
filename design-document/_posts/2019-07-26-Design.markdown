@@ -4,3 +4,14 @@ title:  "Design"
 num: 3.0
 ---
 The Magic 8 Ball software design.
+
+{% include figure.html
+           image="../img/magic-8-ball.jpeg"
+           alt-text="The central design graphic."
+           figure-id="Figure 3.0-1"
+           caption="The design is a digital representation of this object."
+           height="200px"
+           width="200px"
+           align="left"
+%}
+This is the design section.  The point right now is to simply see of my table of figures is populated correctly.  Specifically I'm looking to make sure order is preserved by section.
