@@ -1,0 +1,149 @@
+plugins {
+    // Apply the java plugin to add support for Java
+    id 'java'
+
+    // Apply the application plugin to add support for building an application
+    id 'application'
+    
+    // Apply the jacoco plugin for code coverage analysis
+    id 'jacoco'
+    
+    // Apply the jdepend plugin for code dependency analysis
+    id 'jdepend'
+    
+    // Apply the checkstyle plugin for code style static analysis
+    id 'checkstyle'
+    
+    // Apply the findbugs plugin for code quality static analysis
+    id "com.github.spotbugs" version "1.6.2"
+    
+    // Apply a cucumber pluging for automated acceptance tests
+    id 'com.commercehub.cucumber-jvm' version '0.7'
+
+    // Apply the plantUML plugin for UML diagram generation
+    id 'com.cosminpolifronie.gradle.plantuml' version '1.6.0'
+    
+}
+
+// Define the main class for the application
+mainClassName = 'Driver'
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+ 
+// Add new configuration for
+// dependencies needed to run
+// Groovy command line scripts.
+configurations {
+    groovyScript
+    cucumberRuntime {
+        extendsFrom testRuntime
+    }
+}
+ 
+dependencies {
+    // Set Groovy dependency so
+    // groovy.ui.GroovyMain can be found.
+    groovyScript localGroovy()
+    // Or be specific for a version:
+    //groovyScript "org.codehaus.groovy:groovy-all:2.4.5"
+
+    // This dependency is found on compile classpath of this component and consumers.
+    compile 'com.google.guava:guava:23.0'
+
+    // Use JUnit test framework
+    // testCompile 'junit:junit:5.0'
+    
+    // testImplementation(
+    //         'org.junit.jupiter:junit-jupiter-api:5.1.0'
+    // )
+    // testRuntimeOnly(
+    //         'org.junit.jupiter:junit-jupiter-engine:5.1.0'
+    // )
+    
+    // testCompile 'io.cucumber:cucumber-java:4.0.0'
+    // testCompile 'io.cucumber:cucumber-junit:4.0.0'
+    // testCompile 'junit:junit:4.12'
+}
+
+plantUml {
+    render input: 'src/design/plantuml/*.puml', output: 'design-document/img', format: 'png', withMetadata: false
+}
+
+// test {
+//     useJUnitPlatform()
+// }
+
+task cucumber() {
+    dependsOn assemble, compileTestJava
+    doLast {
+        javaexec {
+            main = "cucumber.api.cli.Main"
+            classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
+            args = ['--plugin', 'json:build/reports/cucumber/cucumber.json', '--plugin', 'junit:build/reports/cucumber/cucumber-junit-report.xml', '--plugin', 'pretty:build/reports/cucumber/cucumber-pretty.txt', '--glue', 'org.do4d.eightball', 'src/test/resources']
+        }
+    }
+}
+
+javadoc {
+    source = sourceSets.main.allJava
+    classpath = configurations.compile
+    //options.addBooleanOption('html5', true)
+}
+
+spotbugs {
+  effort = "max"
+  reportLevel = "low"
+  includeFilter = file("config/findbugs/ExcludeFilter.xml")
+}
+
+// tasks.withType(com.github.spotbugs.SpotBugsTask) {
+//   reports {
+//     xml.enabled = true
+//     html.enabled = false
+//   }
+// }
+
+jacocoTestReport {
+    reports {
+        xml.enabled false
+        html.enabled true
+    }
+}
+
+tasks.withType(JDepend) {
+    reports {
+        text.enabled = true
+        xml.enabled = false
+    }
+}
+
+checkstyle {
+    toolVersion '8.12'
+    configFile file("config/checkstyle/checkstyle.xml")
+}
+checkstyleMain {
+    source ='src/main/java'
+}
+checkstyleTest {
+    source ='src/test/java'
+}
+
+check.dependsOn jacocoTestReport
+
+task spellCheck() {
+    doLast {
+        new ByteArrayOutputStream().withStream { os ->
+            def result = exec {
+                executable = 'python'
+                args = ['./src/tools/python/spell_check.py', './dictionary.dic', './design-document/_posts', './spelling_errors.json']
+                standardOutput = os
+            }
+            ext.spellingErrors = os.toString()
+            
+            assert os.toString().length() == 0 : "Spelling errors exist in the document."
+        }
+    }
+}

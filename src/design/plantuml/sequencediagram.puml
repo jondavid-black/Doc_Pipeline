@@ -1,0 +1,30 @@
+@startuml
+
+header Magic8Ball
+
+title Nominal Use Case
+
+actor User
+participant Driver
+participant Magic8Ball
+
+User->Driver: Launch
+Driver->Magic8Ball: Create
+
+loop infinite
+    Driver->User: "What is your question?"
+    User->Driver: Enter Question
+    
+    alt Question received
+        Driver->Magic8Ball: ask()
+        Driver->Magic8Ball: shake()
+        Driver->Magic8Ball: look()
+        Driver->User: Report answer
+    else q, Q or blank 
+        Driver->Driver: exit()
+    end
+    
+    
+end
+
+@enduml

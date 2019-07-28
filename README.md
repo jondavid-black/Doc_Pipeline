@@ -17,3 +17,7 @@ Here's the list of tools I'm using for the prototype:
 * Hunspell - Spell checking
 * Jenkins - Orchestration
 * Pandoc - Markdown to HTML (for spell checking only)
+* Google Chrome - Print to PDF
+* Gradle - Automated build
+* PlantUML - Define and generage UML diagrams
+* GraphViz - Dependency for PlantUML class diagrams

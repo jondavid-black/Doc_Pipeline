@@ -1,35 +1,59 @@
-apply plugin: 'java'
+plugins {
+    // Apply the java plugin to add support for Java
+    id 'java'
+
+    // Apply the application plugin to add support for building an application
+    id 'application'
+    
+    // Apply the jacoco plugin for code coverage analysis
+    id 'jacoco'
+    
+    // Apply the jdepend plugin for code dependency analysis
+    id 'jdepend'
+    
+    // Apply the checkstyle plugin for code style static analysis
+    id 'checkstyle'
+
+    // Apply the spotbugs plugin for code static analysis
+    id "com.github.spotbugs" version "2.0.0"
+
+    // Apply the plantUML plugin for UML diagram generation
+    id 'com.cosminpolifronie.gradle.plantuml' version '1.6.0'
+}
 
 repositories {
-    jcenter()
-}
- 
-// Add new configuration for
-// dependencies needed to run
-// Groovy command line scripts.
-configurations {
-    groovyScript
-}
- 
-dependencies {
-    // Set Groovy dependency so
-    // groovy.ui.GroovyMain can be found.
-    groovyScript localGroovy()
-    // Or be specific for a version:
-    //groovyScript "org.codehaus.groovy:groovy-all:2.4.5"
+    jcenter() 
 }
 
-task spellCheck() {
-    doLast {
-        new ByteArrayOutputStream().withStream { os ->
-            def result = exec {
-                executable = 'python'
-                args = ['./src/tools/python/spell_check.py', './dictionary.dic', './design-document/_posts', './spelling_errors.json']
-                standardOutput = os
-            }
-            ext.spellingErrors = os.toString()
-            
-            assert os.toString().length() == 0 : "Spelling errors exist in the document."
-        }
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.3.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.3.1'
+    testImplementation 'io.cucumber:cucumber-java:4.3.1' 
+    testImplementation 'io.cucumber:cucumber-junit:4.3.1'
+}
+
+// Define the main class for the application
+mainClassName = 'Driver'
+
+plantUml {
+    render input: 'src/design/plantuml/*.puml', output: 'design-document/img', format: 'png', withMetadata: false
+}
+
+spotbugs {
+  effort = "max"
+  reportLevel = "low"
+  includeFilter = file("config/findbugs/ExcludeFilter.xml")
+}
+tasks.withType(com.github.spotbugs.SpotBugsTask) {
+  reports {
+    xml.enabled = true
+    html.enabled = false
+  }
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled false
+        html.enabled true
     }
 }

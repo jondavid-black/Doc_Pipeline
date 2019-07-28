@@ -1,2 +1,12 @@
 .gradle
+.classpath
+.project
+.settings
+.vscode
+bin
+build
 spelling_errors.json
+design-document/img/classdiagram.png
+design-document/img/sequencediagram.png
+design-document/_includes/requirements_table.html
+design-document/_includes/derived_requirements_table.html

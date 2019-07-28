@@ -42,7 +42,6 @@ body {
 .doc-body {
     background: white;
     font-size: 12pt;
-    page-break-after: always;
 }
 
 .doc-footer {
@@ -146,7 +145,14 @@ body {
     font-size: 12pt;
     font-weight: normal;
     text-align: left;
+}
+.section-page-break {
     page-break-after: always;
+}
+.subsection-body {
+    font-size: 12pt;
+    font-weight: normal;
+    text-align: left;
 }
 .acronym-list {
     background: white;
@@ -164,6 +170,7 @@ body {
     padding: 0px;
 }
 .figure-right {
+    display: table;
     float: right;
     text-align: center;
     font-style: italic;
@@ -174,6 +181,7 @@ body {
     padding: 0px;
 }
 .figure-none {
+    display: table;
     float: none;
     text-align: center;
     font-style: italic;

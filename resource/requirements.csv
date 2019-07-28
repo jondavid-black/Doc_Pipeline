@@ -1,0 +1,4 @@
+Id, Requirement, Version, TADI
+001, Magic 8 Ball shall receive a question., V1, T
+002, The Magic 8 Ball shall randomize a response when shaken., V1, T
+003, The Magic 8 Ball shall provide a response when viewed., V1, T 

@@ -1,0 +1,21 @@
+@startuml
+
+interface Magic8Ball {
+    ask(String question): void
+	shake(): void
+	look(): String
+}
+
+class StandardMagic8Ball implements Magic8Ball {
+    String[]: possibleAnswers
+}
+
+class DevOpsMagic8Ball extends StandardMagic8Ball {
+    String[]: devOpsQuotes
+}
+
+class Driver {
+    static main(String[] args): void
+}
+
+@enduml
