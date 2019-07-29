@@ -94,6 +94,9 @@ pipeline {
         stage('Launch Jekyll') {
             steps {
                 sh './runJekyll.sh'
+                // give jekyll some time to start up
+                //  otherwise the pdf generated will be empty
+                sh 'sleep 20'
             }
         }
 
