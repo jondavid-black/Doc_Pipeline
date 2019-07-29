@@ -4,4 +4,4 @@ title:  "Test"
 num: 4.0
 level: section
 ---
-The Magic 8 Ball testing section was going to include graphs and figures generated during the execution of the pipeline, but since other sections already demonstrate this I'm just going to skip this for now.  Yes, I'm being lazy...but in reality I've already spent a few days putting this together so I feel ok about it.
+The Magic 8 Ball testing section was going to include graphs and figures generated during the execution of the pipeline, but since other sections already demonstrate this I'm just going to skip this for now.  Yes, I'm being lazy...but in reality I already spent a few days putting this together so I feel OK about it.

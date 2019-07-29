@@ -4,7 +4,7 @@ title:  "Design"
 num: 3.0
 level: section
 ---
-The Magic 8 Ball software design is currently in the Minimum Viable Product (MVP) phase.  The design and implementation are purposefully simple but perform the basic functions of a Magic 8 Ball in a demonstratable way.  The desired behavior of this MVP is captured as a sequence diagram in Figure 3.0-1.
+The Magic 8 Ball software design is currently in the Minimum Viable Product (MVP) phase.  The design and implementation are purposefully simple but perform the basic functions of a Magic 8 Ball in a demonstrable way.  The desired behavior of this MVP is captured as a sequence diagram in Figure 3.0-1.
 
 {% include figure.html
            image="../img/sequencediagram.png"
@@ -15,7 +15,7 @@ The Magic 8 Ball software design is currently in the Minimum Viable Product (MVP
            width="300px"
            align="left"
 %}
-As you can see, the user interacts with a driver.  This driver is simply a main which can be launched from the command line.  The driver will create an instance of the Magic 8 Ball and then ask the user to provide a question.  Once the user provides the question, the driver provides the question to the Magic 8 Ball, shakes the Magic 8 Ball, and looks at the response provided by the Magic 8 Ball.  The driver then provides that response to the user.  At this point, the process is repeated by asking the user for another question.  If the user chooses to quit, rather than providing a question the user may simply type "q", "Q", or hit enter.  This will cause the driver's user interaction loop to terminate which in turn will terminate the appliation.
+As you can see, the user interacts with a driver.  This driver is simply a main which can be launched from the command line.  The driver will create an instance of the Magic 8 Ball and then ask the user to provide a question.  Once the user provides the question, the driver provides the question to the Magic 8 Ball, shakes the Magic 8 Ball, and looks at the response provided by the Magic 8 Ball.  The driver then provides that response to the user.  At this point, the process is repeated by asking the user for another question.  If the user chooses to quit, rather than providing a question the user may simply type "q", "Q", or hit enter.  This will cause the driver's user interaction loop to terminate which in turn will terminate the application.
 
 {% include figure.html
            image="../img/classdiagram.png"
@@ -26,4 +26,4 @@ As you can see, the user interacts with a driver.  This driver is simply a main 
            width="300px"
            align="right"
 %}
-The Magic 8 Ball class diagram is also very simple.  The core classes represented in Figure 3.0-1 are the Driver class and the Magic 8 Ball Interface.  Figure 3.0-2 provides the class diagram for the Magic 8 Ball.  As you can see, there are 2 concrete implementations of the Magic 8 Ball interface.  First is the Standard Magic 8 Ball which must perform as a standard off the shelf Magic 8 Ball would perform, including providing the standard responses in a randomized manner.  The second is the DevOps Magic 8 Ball which extends this functionallity by appending a DevOps quote to the Magic 8 Ball response.
+The Magic 8 Ball class diagram is also very simple.  The core classes represented in Figure 3.0-1 are the Driver class and the Magic 8 Ball Interface.  Figure 3.0-2 provides the class diagram for the Magic 8 Ball.  As you can see, there are 2 concrete implementations of the Magic 8 Ball interface.  First is the Standard Magic 8 Ball which must perform as a standard off the shelf Magic 8 Ball would perform, including providing the standard responses in a randomized manner.  The second is the DevOps Magic 8 Ball which extends this functionality by appending a DevOps quote to the Magic 8 Ball response.

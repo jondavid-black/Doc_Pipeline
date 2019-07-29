@@ -39,6 +39,18 @@ plantUml {
     render input: 'src/design/plantuml/*.puml', output: 'design-document/img', format: 'png', withMetadata: false
 }
 
+jacoco {
+    reportsDir = file("$buildDir/reports/jacoco")
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
+        csv.enabled false
+        html.destination file("$buildDir/reports/jacocoHtml")
+    }
+}
+
 spotbugs {
   effort = "max"
   reportLevel = "low"
@@ -55,5 +67,20 @@ jacocoTestReport {
     reports {
         xml.enabled false
         html.enabled true
+    }
+}
+
+task spellCheck() {
+    doLast {
+        new ByteArrayOutputStream().withStream { os ->
+            def result = exec {
+                executable = 'python'
+                args = ['./src/tools/python/spell_check.py', './dictionary.dic', './design-document/_posts', './spelling_errors.json']
+                standardOutput = os
+            }
+            ext.spellingErrors = os.toString()
+            
+            assert os.toString().length() == 0 : "Spelling errors exist in the document."
+        }
     }
 }
