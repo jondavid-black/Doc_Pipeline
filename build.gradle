@@ -45,17 +45,47 @@ plantUml {
     render input: 'src/design/plantuml/*.puml', output: 'design-document/img', format: 'png', withMetadata: false
 }
 
+test {
+    useJUnitPlatform()
+    reports {
+        junitXml.enabled = true
+        html.enabled = true
+    }
+}
+
 jacoco {
-    reportsDir = file("$buildDir/reports/jacoco")
+    // toolVersion = "0.8.4"
+    reportsDir = file("${buildDir}/reports/jacoco")
 }
 
 jacocoTestReport {
     reports {
-        xml.enabled true
+        xml.enabled false
         csv.enabled false
-        html.destination file("$buildDir/reports/jacocoHtml")
+        html.enabled true
+        html.destination file("${buildDir}/reports/jacocoHtml")
     }
 }
+
+// task codeCoverageReport(type: JacocoReport) {
+//     executionData fileTree(project.rootDir.absolutePath).include("**/build/jacoco/*.exec")
+
+//     subprojects.each {
+//         sourceSets it.sourceSets.main
+//     }
+
+//     reports {
+//         xml.enabled false
+//         xml.destination "${buildDir}/reports/jacoco/report.xml"
+//         html.enabled true
+//         html.destination "${buildDir}/reports/jacocoHTML/report.xml"
+//         csv.enabled false
+//     }
+// }
+
+// codeCoverageReport.dependsOn {
+//     subprojects*.test
+// }
 
 spotbugs {
   effort = "max"
@@ -69,12 +99,12 @@ tasks.withType(com.github.spotbugs.SpotBugsTask) {
   }
 }
 
-jacocoTestReport {
-    reports {
-        xml.enabled false
-        html.enabled true
-    }
-}
+// jacocoTestReport {
+//     reports {
+//         xml.enabled false
+//         html.enabled true
+//     }
+// }
 
 task cucumber() {
     dependsOn assemble, compileTestJava

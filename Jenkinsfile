@@ -15,7 +15,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'gradle build -x checkstyleMain -x checkstyleTest -x spotbugsMain -x spotbugsTest'
-                step( [ $class: 'JacocoPublisher' ] )
+                sh 'gradle jacocoTestReport'
             }
         }
         stage('Static Analysis') {
@@ -135,7 +135,7 @@ pipeline {
 		        allowMissing: false,
 		        alwaysLinkToLastBuild: false,
 		        keepAll: true,
-		        reportDir: 'build/reports/jacoco/test/html/',
+		        reportDir: 'build/reports/jacocoHtml/',
 		        reportFiles: 'index.html',
 		        reportName: "Coverage Reports"
 		    ])
