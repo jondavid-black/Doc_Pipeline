@@ -69,8 +69,8 @@ pipeline {
         stage('Generate Tables') {
             steps {
                 sh 'echo "Generate Tables"'
-                sh 'python genHtmlTableFromCsv.py resource/requirements.csv "Top Level Requirments" design-document/_includes/requirements_table.html'
-                sh 'python genHtmlTableFromCsv.py resource/derived_requirements.csv "Derived Requirments" design-document/_includes/derived_requirements_table.html'
+                sh 'python ./src/tools/python/genHtmlTableFromCsv.py resource/requirements.csv "Top Level Requirments" design-document/_includes/requirements_table.html'
+                sh 'python ./src/tools/python/genHtmlTableFromCsv.py resource/derived_requirements.csv "Derived Requirments" design-document/_includes/derived_requirements_table.html'
             }
         }
 
