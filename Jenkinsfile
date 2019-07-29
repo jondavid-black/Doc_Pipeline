@@ -14,14 +14,13 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'chmod +x ./gradlew'
-                sh './gradlew build -x checkstyleMain -x checkstyleTest -x spotbugsMain -x spotbugsTest'
+                sh 'gradle build -x checkstyleMain -x checkstyleTest -x spotbugsMain -x spotbugsTest'
                 step( [ $class: 'JacocoPublisher' ] )
             }
         }
         stage('Static Analysis') {
             steps {
-                sh './gradlew check'
+                sh 'gradle check'
                 step([$class: 'hudson.plugins.checkstyle.CheckStylePublisher', 
                      pattern: 'build/reports/checkstyle/main.xml', 
                      unstableTotalAll:'0',unhealthy:'100', healthy:'100'])
@@ -31,13 +30,13 @@ pipeline {
         }
         stage('Docs') {
             steps {
-                sh './gradlew javadoc'
+                sh 'gradle javadoc'
             }
 
         }
         stage('Acceptance Test') {
             steps {
-                sh './gradlew cucumber'
+                sh 'gradle cucumber'
             }
 
         }
