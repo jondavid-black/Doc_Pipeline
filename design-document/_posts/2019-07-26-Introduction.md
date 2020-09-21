@@ -16,3 +16,7 @@ The Magic 8 Ball application is a digital representation of a well known toy (se
            align="left"
 %}
 This project will create a digital representation of the Magic 8 Ball toy.  The purpose of this is to provide a simple basis for demonstrating DevOps concepts and technology at the [DevOps for Defense Meetup](https://www.meetup.com/DevOps-for-Defense/).  This project was created because of the simplicity of the implementation.  The point is to demonstrate DevOps solutions, not a fancy or complex software implementation.  This design document is an aspect of what can be done to improve configuration management and document delivery through automation using DevOps principles.  This is not meant to be perfect, but rather serve as an example for others to tailor to their needs.
+This is a test edit.  I'm just trying to see how well the stackedit tool integrates with the version control aspects of GitHub.
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbMTEyMzc2ODA2N119
+-->
